@@ -20,6 +20,11 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'gaving2016'
+          git config --global user.email 'gaving2014@hotmail.com'
+
       # 安装依赖
       - name: Install dependencies
         run: npm install
@@ -32,6 +37,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.INTERVIEWQUESTION }}
           publish_dir: ./docs/.vuepress/dist
+          TARGET_REPO: gaving2016/interviewquestionforjava
+          TARGET_BRANCH: gh-pages
 
