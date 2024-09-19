@@ -36,8 +36,9 @@ jobs:
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.INTERVIEWQUESTION }}
-          TARGET_REPO: gaving2016/interviewquestion
-          TARGET_BRANCH: gh-pages
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./docs/.vuepress/dist
+          publish_branch: gh-pages # 如果没有该分支，它会自动创建
+
 
