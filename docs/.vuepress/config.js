@@ -20,9 +20,12 @@ export default defineUserConfig({
         sidebar: {
             '/guide/': [
                 {
-                    text: 'Guide',
-                    children: ['/guide/README.md'],
-                },
+                    title: '向导',
+                    collapsable: false,
+                    children: [
+                       '/guide/README.md',
+                    ]
+                }
             ],
             '/base/': [
                 {
