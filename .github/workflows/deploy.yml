@@ -1,0 +1,37 @@
+name: Deploy VuePress site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # 监听 main 分支的变化
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出仓库代码
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 安装依赖
+      - name: Install dependencies
+        run: npm install
+
+      # 构建 VuePress 静态网站
+      - name: Build VuePress site
+        run: npm run docs:build
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/.vuepress/dist
+
